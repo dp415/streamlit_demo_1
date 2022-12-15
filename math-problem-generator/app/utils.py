@@ -33,6 +33,21 @@ def add_bg_from_local(image_file):
     """,
     unsafe_allow_html=True
     )
+
+def add_bg_from_url(address):
+    st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url("{address}");
+             background-attachment: fixed;
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
+
 def set_bg(png_file):
     bin_str = get_base64(png_file)
     page_bg_img = """
