@@ -6,7 +6,8 @@ st.set_page_config(
     page_icon='assets/icon.png'
 )
 
-set_bg('assets/background.png')
+#set_bg('assets/background.png')
+add_bg_from_local
 
 head()
 
