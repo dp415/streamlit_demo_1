@@ -1,5 +1,5 @@
 import streamlit as st
-from utils import read_data, head, body, set_bg
+from utils import read_data, head, body, set_bg, add_bg_from_local
 
 st.set_page_config(
     page_title='Math Problem Generator',
@@ -7,7 +7,7 @@ st.set_page_config(
 )
 
 #set_bg('assets/background.png')
-add_bg_from_local('../assets/background.png')
+add_bg_from_local('assets/background.png')
 
 head()
 
