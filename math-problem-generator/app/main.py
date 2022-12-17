@@ -13,6 +13,6 @@ add_bg_from_url('https://raw.githubusercontent.com/dp415/streamlit_demo_1/main/m
 head()
 
 if st.button('Bring it on!'):
-    df = read_data('data/olympiad-problems.csv')
+    df = read_data('data/olympiad-problems2.csv')
     choice = df.sample(1)
     body(choice)
