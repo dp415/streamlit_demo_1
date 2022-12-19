@@ -1,0 +1,10 @@
+{
+    'offline':
+    {'math_problems':'data/olympiad-problems.csv',
+     'background:'assets/background.png',
+     'page_icon':'assets/icon.png'},
+    'online':
+    {'math_problems':'https://raw.githubusercontent.com/dp415/streamlit_demo_1/testing2.0-0-SmallerFile/math-problem-generator/data/olympiad-problems.csv',
+     'background':'https://raw.githubusercontent.com/dp415/streamlit_demo_1/main/math-problem-generator/assets/background.png',
+     'page_icon':'https://raw.githubusercontent.com/dp415/streamlit_demo_1/main/math-problem-generator/assets/icon.png'}
+}
