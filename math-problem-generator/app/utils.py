@@ -1,41 +1,20 @@
-"""
-Utility functions for:
-    1. reading data
-    2. setting background
-    3. writing head and body
-"""
-
 import base64
 import pandas as pd
 import streamlit as st
 
-#@st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True)
 
 def read_data(path):
     return pd.read_csv(path)
-"""
+
 def get_base64(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
-    return base64.b64encode(data).decode()
-"""
-def add_bg_from_local(image_file):
-    with open(image_file, "rb") as image_file:
-        encoded_string = base64.b64encode(image_file.read())
-    st.markdown(
-    f"""
-    <style>
-    .stApp {{
-        background-image: url(data:image/{"png"};base64,{encoded_string.decode()});
-        background-size: cover
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-    )
+    return base64.b64encode(data)
 
-def add_bg_from_url(address):
-    st.markdown(
+def set_background(address_type,address):
+    if(address_type=="url"):
+        st.markdown(
          f"""
          <style>
          .stApp {{
@@ -46,21 +25,22 @@ def add_bg_from_url(address):
          </style>
          """,
          unsafe_allow_html=True
-     )
-
-def set_bg(png_file):
-    bin_str = get_base64(png_file)
-    page_bg_img = """
-        <style>
-        .stApp {
-        background-image: url("data:image/png;base64,%s");
-        background-size: cover;
-        }
-        </style>
-    """ % bin_str
-    st.markdown(page_bg_img, unsafe_allow_html=True)
-
-
+        )
+    elif(address_type=="local"):
+        bin_str = get_base64(address)
+        st.markdown(
+            f"""
+            <style>
+            .stApp {{
+                background-image: url(data:image/{"png"};base64,{bin_str.decode()});
+                background-size: cover
+            }}
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+    else:
+        return False
 
 def head():
     st.markdown("""
