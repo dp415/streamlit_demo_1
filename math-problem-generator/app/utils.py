@@ -13,12 +13,12 @@ import streamlit as st
 
 def read_data(path):
     return pd.read_csv(path)
-"""
+
 def get_base64(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
     return base64.b64encode(data).decode()
-"""
+
 def add_bg_from_local(image_file):
     with open(image_file, "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
@@ -60,7 +60,33 @@ def set_bg(png_file):
     """ % bin_str
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
-
+def set_bg(address_type,address):
+    if(address_type=="url"):
+        st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url("{address}");
+             background-attachment: fixed;
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+        )
+    elif(address_type=="local"): #handle as local file
+        bin_str = get_base64(png_file)
+        page_bg_img = """
+            <style>
+            .stApp {
+            background-image: url("data:image/png;base64,%s");
+            background-size: cover;
+            }
+            </style>
+        """ % bin_str
+        st.markdown(page_bg_img, unsafe_allow_html=True)
+    else: #error: address_type not an acceptible type
+        return False
 
 def head():
     st.markdown("""
