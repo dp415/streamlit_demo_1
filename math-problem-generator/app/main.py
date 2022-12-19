@@ -2,7 +2,7 @@ import streamlit as st
 from utils import read_data, set_background, head, body
 from data_location import data_location
 
-address_type = "local"
+address_type = "url"
 
 data_location = data_location[address_type]
 
