@@ -17,7 +17,7 @@ def read_data(path):
 def get_base64(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
-    return base64.b64encode(data).decode()
+    return base64.b64encode(data)
 
 def add_bg_from_local(image_file):
     with open(image_file, "rb") as image_file:
@@ -60,7 +60,7 @@ def set_bg(png_file):
     """ % bin_str
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
-def set_bg(address_type,address):
+def set_background(address_type,address):
     if(address_type=="url"):
         st.markdown(
          f"""
@@ -75,16 +75,18 @@ def set_bg(address_type,address):
          unsafe_allow_html=True
         )
     elif(address_type=="local"): #handle as local file
-        bin_str = get_base64(png_file)
-        page_bg_img = """
+        bin_str = get_base64(address)
+        st.markdown(
+            f"""
             <style>
-            .stApp {
-            background-image: url("data:image/png;base64,%s");
-            background-size: cover;
-            }
+            .stApp {{
+                background-image: url(data:image/{"png"};base64,{bin_string.decode()});
+                background-size: cover
+            }}
             </style>
-        """ % bin_str
-        st.markdown(page_bg_img, unsafe_allow_html=True)
+            """,
+            unsafe_allow_html=True
+        )
     else: #error: address_type not an acceptible type
         return False
 
