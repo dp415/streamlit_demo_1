@@ -1,10 +1,3 @@
-"""
-Utility functions for:
-    1. reading data
-    2. setting background
-    3. writing head and body
-"""
-
 import base64
 import pandas as pd
 import streamlit as st
@@ -33,7 +26,7 @@ def set_background(address_type,address):
          """,
          unsafe_allow_html=True
         )
-    elif(address_type=="local"): #handle as local file
+    elif(address_type=="local"):
         bin_str = get_base64(address)
         st.markdown(
             f"""
@@ -46,7 +39,7 @@ def set_background(address_type,address):
             """,
             unsafe_allow_html=True
         )
-    else: #error: address_type not an acceptible type
+    else:
         return False
 
 def head():

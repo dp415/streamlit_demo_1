@@ -2,9 +2,9 @@ import streamlit as st
 from utils import read_data, set_background, head, body
 from data_location import data_location
 
-address_type = "local" #local or url
+address_type = "local"
 
-data_location = data_location[address_type] #declare the data source depending upon the version: development = local (offline), production = url (online)
+data_location = data_location[address_type]
 
 st.set_page_config(
     page_title = 'Math Problem Generator',
